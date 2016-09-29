@@ -5,10 +5,10 @@ namespace elitecore
 	{
 		public DateTime Timestamp;
 		public string Event;
-		public PilotEvent(object json)
+		public PilotEvent()
 		{
-			System.Web.Helpers.DynamicJsonObject j = (System.Web.Helpers.DynamicJsonObject)json;
-			System.Diagnostics.Debug.WriteLine(j.GetDynamicMemberNames());
+			//System.Web.Helpers.DynamicJsonObject j = (System.Web.Helpers.DynamicJsonObject)json;
+			//System.Diagnostics.Debug.WriteLine(j.GetDynamicMemberNames());
 			//this.Event =
 			//this.Timestamp = System
 		}

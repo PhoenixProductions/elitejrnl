@@ -95,7 +95,8 @@ namespace elitecore
 		void parseLine(string line)
 		{
 			System.Diagnostics.Debug.WriteLine("Parsing: " + line);
-			PilotEvent e = new PilotEvent(System.Web.Helpers.Json.Decode(line));
+
+			//PilotEvent e = new PilotEvent();
 
 		}
 
