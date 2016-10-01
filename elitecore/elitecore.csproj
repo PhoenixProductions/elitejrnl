@@ -29,15 +29,20 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PilotLogManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IPilotLogManagerGuardians.cs" />
-    <Compile Include="PilotEvents\PilotEvent.cs" />
+    <Compile Include="PilotEvents\PilotEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />

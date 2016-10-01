@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<PlotEvents>
+	<event id="rank" signficance="">
+		<responses>
+			<response>{commanderName}</response>
+		</responses>
+	</event>
+</PlotEvents>

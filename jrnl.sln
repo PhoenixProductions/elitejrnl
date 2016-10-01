@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elitecore", "elitecore\elit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testHarness", "testHarness\testHarness.csproj", "{5C33073A-D005-4E87-9933-5FF37143C039}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bard", "Bard\Bard.csproj", "{DA4B16D1-C150-46D8-BF24-3E3DD7F4864F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -25,5 +27,9 @@ Global
 		{5C33073A-D005-4E87-9933-5FF37143C039}.Debug|x86.Build.0 = Debug|x86
 		{5C33073A-D005-4E87-9933-5FF37143C039}.Release|x86.ActiveCfg = Release|x86
 		{5C33073A-D005-4E87-9933-5FF37143C039}.Release|x86.Build.0 = Release|x86
+		{DA4B16D1-C150-46D8-BF24-3E3DD7F4864F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA4B16D1-C150-46D8-BF24-3E3DD7F4864F}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA4B16D1-C150-46D8-BF24-3E3DD7F4864F}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA4B16D1-C150-46D8-BF24-3E3DD7F4864F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

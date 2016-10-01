@@ -8,6 +8,7 @@ namespace elitecore
 	/// </summary>
 	public class PilotLogManager
 	{
+		public event EventHandler PilotEvent;
 		private string journalDirectory;
 		public PilotLogManager(string JournalDirectory)
 		{
@@ -95,11 +96,19 @@ namespace elitecore
 		void parseLine(string line)
 		{
 			System.Diagnostics.Debug.WriteLine("Parsing: " + line);
-
-			//PilotEvent e = new PilotEvent();
+			PilotEventArgs e = new PilotEventArgs(line);
+			e.rawEventLog = line;
+			OnPilotEvent(e);
 
 		}
 
-
+		protected virtual void OnPilotEvent(EventArgs e)
+		{
+			EventHandler handler = PilotEvent;
+			if (handler != null)
+			{
+				handler(this, e);
+			}
+		}
 	}
 }
