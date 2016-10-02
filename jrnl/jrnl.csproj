@@ -35,5 +35,29 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="responses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bard\Bard.csproj">
+      <Project>{DA4B16D1-C150-46D8-BF24-3E3DD7F4864F}</Project>
+      <Name>Bard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\elitecore\elitecore.csproj">
+      <Project>{719B84B8-086F-40C1-9577-116C9F0FB044}</Project>
+      <Name>elitecore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="responses\docked.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="responses\fsdjump.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="responses\undocked.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

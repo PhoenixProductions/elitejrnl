@@ -1,0 +1,3 @@
+﻿Docked at {stationname} in {starsystem}.
+{commander} docked at {stationname} in {starsystem}.
+Their {ship} docked in {starsystem}.

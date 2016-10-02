@@ -1,0 +1,5 @@
+﻿
+{commander} undocked from {stationname}.
+{commander} undocked from {stationname}'s {stationtype} station.
+Left {stationname}
+Left {stationname} at {timestamp}. 

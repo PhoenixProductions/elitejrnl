@@ -1,0 +1,5 @@
+﻿{commander} jumped into {starsystem}.
+{commander} arrived in {starsystem}.
+{commander} arrived in the {allegiance} system of {starsystem}.
+{commander} arrived in the {economy_localised} system of {starsystem}.
+{commander} arrived in {starsystem} from {lastsystem}.

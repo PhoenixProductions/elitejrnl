@@ -13,7 +13,7 @@ namespace Bard
 
 		private double signficance;
 
-		private System.Collections.Hashtable responses;
+		private Hashtable responses;
 
 		public Hashtable Responses
 		{
@@ -26,18 +26,19 @@ namespace Bard
 
 		public EventResponse(string eventId) : this(eventId, 0.0)
 		{
-			this.eventId = eventId.ToLower();
-
-			this.responses = new System.Collections.Hashtable();
+			
 		}
 		public EventResponse(string eventId, double signficance)
 		{
+			this.responses = new Hashtable();
+			this.eventId = eventId.ToLower();
 			this.signficance = signficance;
+
 		}
 
 		public void AddResponseText(string responseText)
 		{
-			string hash = EventResponse.GetMd5Hash(responseText);
+			string hash = GetMd5Hash(responseText);
 			if (!Responses.ContainsKey(hash))
 			{
 				System.Diagnostics.Debug.WriteLine("Adding new response text");

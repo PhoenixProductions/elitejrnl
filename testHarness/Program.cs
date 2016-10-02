@@ -34,7 +34,7 @@ namespace testHarness
 			while((line = sr.ReadLine()) != null) {
 				Console.WriteLine(line);
 				Bard.PlotEvent plotevent = Bard.PlotEvent.FromEliteLogData(line);
-				b.NoteEvent(plotevent);
+				Bard.NoteEvent(b, plotevent);
 			}
 			sr.Close();
 			b.dump();
@@ -87,7 +87,7 @@ namespace testHarness
 			}
 			System.Diagnostics.Debug.WriteLine(plotevent);
 			*/
-			b.NoteEvent(plotevent);
+			Bard.NoteEvent(b, plotevent);
 		}
 	}
 }

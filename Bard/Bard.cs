@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Formatters;
 namespace Bard
 {
 	[Serializable]
@@ -62,14 +61,14 @@ namespace Bard
 				bool flag2 = e.Facts["event"].Value.ToString().ToLower() == "loadgame";
 				if (flag2)
 				{
-					this.cmdr.AddFact(e.Facts["commander"]);
-					this.cmdr.AddFact(e.Facts["ship"]);
-					this.cmdr.AddFact(e.Facts["credits"]);
-					this.cmdr.AddFact(e.Facts["loan"]);
+					cmdr.AddFact(e.Facts["commander"]);
+					cmdr.AddFact(e.Facts["ship"]);
+					cmdr.AddFact(e.Facts["credits"]);
+					cmdr.AddFact(e.Facts["loan"]);
 				}
 				else
 				{
-					this.plotEvents.Add(e);
+					plotEvents.Add(e);
 				}
 			}
 		}
@@ -82,37 +81,53 @@ namespace Bard
 			bool writeUnknownEvents = false;
 			//if (!File.Exists(FilePath))
 			{
-				using (System.IO.StreamWriter sr = new StreamWriter(FilePath, false))
+				using (StreamWriter sr = new StreamWriter(FilePath, false))
 				{
-					foreach (PlotEvent e in this.plotEvents)
+					foreach (PlotEvent e in plotEvents)
 					{
 						try
 						{
-							EventResponse r = this.ResponseManager.Respond(e.Event);
-							System.Diagnostics.Debug.WriteLine(string.Format("Numer of possible responses: {0}", r.Responses.Count));
-							EventResponseClause rc = r.Select();
-							System.Diagnostics.Debug.WriteLine(rc.Text);
-							string line = rc.Text;
-							System.Diagnostics.Debug.WriteLine(string.Format("Last Used :{0}", rc.LastUsed));
-							rc.UsageCount++;
-							System.Diagnostics.Debug.WriteLine(string.Format("Times Used :{0}", rc.UsageCount));
-							rc.LastUsed = DateTime.Now;
+							EventResponse r = ResponseManager.Respond(e.Event);
+							Debug.WriteLine(string.Format("Numer of possible responses: {0}", r.Responses.Count));
+							string line = "";
+							for (int attempts = 0; attempts < r.Responses.Count; attempts++)
+							{
+								EventResponseClause rc = r.Select();
+								Debug.WriteLine(rc.Text);
+								line = rc.Text;
+								Debug.WriteLine(string.Format("Last Used :{0}", rc.LastUsed));
+								rc.UsageCount++;
+								Debug.WriteLine(string.Format("Times Used :{0}", rc.UsageCount));
+								rc.LastUsed = DateTime.Now;
 
-							// TODO match {} tokens with facts from the event
-							foreach (string key in this.cmdr.Facts.Keys)
-							{
-								string token = String.Format("{{{0}}}", key);
-								line = line.Replace(token, cmdr.Facts[key].Value.ToString());
+								// TODO match {} tokens with facts from the event
+								foreach (string key in cmdr.Facts.Keys)
+								{
+									string token = string.Format("{{{0}}}", key);
+									line = line.Replace(token, cmdr.Facts[key].Value.ToString());
+								}
+								foreach (string key in e.Facts.Keys)
+								{
+									string token = string.Format("{{{0}}}", key);
+									string replacement = e.Facts[key].Value.ToString();
+									line = line.Replace(token, replacement);
+								}
+								//Otherwise we go round until we either hit the limit or we complete the text
+								if (line.IndexOf("{{", StringComparison.CurrentCultureIgnoreCase) >= 0)
+								{
+									// we have an unknown fact
+									Debug.WriteLine("Unknown fact in " + line);
+									line = "";
+								}
+								else {
+									break;	// all subs made so exit loop
+								}
 							}
-							foreach (string key in e.Facts.Keys)
+							Debug.WriteLine(line);
+							if (line != "")
 							{
-								string token = String.Format("{{{0}}}", key);
-								string replacement = e.Facts[key].Value.ToString();
-								//System.Diagnostics.Debug.WriteLine(String.Format("Replacing '{0}' with {1}", token,replacement));
-								line = line.Replace(token, replacement);
+								sr.WriteLine(line);
 							}
-							System.Diagnostics.Debug.WriteLine(line);
-							sr.WriteLine(line);
 						}
 						catch (UnknownEventException exception)
 						{
@@ -132,19 +147,19 @@ namespace Bard
 		public void dump()
 		{
 			Console.WriteLine("Tokens:");
-			foreach (string s in this.tokens)
+			foreach (string s in tokens)
 			{
 				Console.WriteLine(" {0} - {1}", s, this.tokens[s]);
 			}
 			Console.WriteLine("");
 			Console.WriteLine("Commander Facts:");
-			foreach (Fact f in this.cmdr.Facts.Values)
+			foreach (Fact f in cmdr.Facts.Values)
 			{
 				Console.WriteLine(" {0} - {1}", f.Name, f.Value);
 			}
 			Console.WriteLine("");
 			Console.WriteLine("PlotEvents:");
-			foreach (PlotEvent e in this.plotEvents)
+			foreach (PlotEvent e in plotEvents)
 			{
 				Console.WriteLine("{0} - {1}", e.Facts["timestamp"].Value, e.Facts["event"].Value);
 				Console.WriteLine("Event Facts: ");
