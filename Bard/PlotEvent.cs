@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace Bard
 {
+	[Serializable]
 	public class PlotEvent : Factable	
 	{
 		public DateTime TimeStamp;
@@ -12,7 +13,6 @@ namespace Bard
 		/// How importance is this plot event
 		/// </summary>
 		public double Significance = 0.0;  // Middle to -1>0>1
-
 
 		public PlotEvent()
 		{

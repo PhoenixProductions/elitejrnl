@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
+using System.Runtime.Serialization.Formatters;
 namespace Bard
 {
 	[Serializable]
@@ -100,8 +100,10 @@ namespace Bard
 		public static void Save(Bard bard, string FilePath)
 		{
 			FileStream outfile = File.Create(FilePath);
+			//System.Runtime.Serialization.Formatters.Soap.SoapFormatter sf = new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
 			BinaryFormatter bf = new BinaryFormatter();
 			bf.Serialize(outfile, bard);
+			//sf.Serialize(outfile, bard);
 			outfile.Close();
 		}
 
@@ -111,8 +113,10 @@ namespace Bard
 			if (flag)
 			{
 				FileStream fs = File.OpenRead(FilePath);
+				//System.Runtime.Serialization.Formatters.Soap.SoapFormatter sf = new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
 				BinaryFormatter bf = new BinaryFormatter();
 				Bard bard = (Bard)bf.Deserialize(fs);
+				//Bard bard = (Bard)sf.Deserialize(fs);
 				fs.Close();
 				return bard;
 			}

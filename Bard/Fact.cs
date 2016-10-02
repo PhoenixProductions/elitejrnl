@@ -4,6 +4,7 @@ namespace Bard
 	/// <summary>
 	/// Represents a single fact about something.
 	/// </summary>
+	[Serializable]
 	public class Fact
 	{
 		DateTime _created;

@@ -31,6 +31,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bard.cs" />
@@ -40,6 +41,8 @@
     <Compile Include="EntityInfo.cs" />
     <Compile Include="Fact.cs" />
     <Compile Include="Factable.cs" />
+    <Compile Include="Responses\EventResponse.cs" />
+    <Compile Include="Responses\EventResponseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClauseLibrary.xml" />
@@ -49,6 +52,7 @@
   <ItemGroup>
     <Folder Include="PlotEvents\" />
     <Folder Include="PlotEvents\Rank\" />
+    <Folder Include="Responses\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

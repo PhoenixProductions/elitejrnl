@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Bard
 {
+	[Serializable]
 	public abstract class Factable
 	{
 		/// <summary>

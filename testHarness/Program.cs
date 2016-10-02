@@ -15,10 +15,10 @@ namespace testHarness
 		protected static void readExisting(string filename)
 		{
 			//var b = new Bard.Bard();
-			if (System.IO.File.Exists("bard.bin"))
+			if (System.IO.File.Exists("bard.xml"))
 			{
 				System.Diagnostics.Debug.WriteLine("Loading existing bard");
-				b = Bard.Bard.Load("bard.bin");
+				b = Bard.Bard.Load("bard.xml");
 			}
 			else {
 				System.Diagnostics.Debug.WriteLine("Creating New bard");
@@ -37,7 +37,7 @@ namespace testHarness
 			while (Console.ReadKey().Key != ConsoleKey.Escape)
 			{
 			}
-			Bard.Bard.Save(b, "bard.bin");
+			Bard.Bard.Save(b, "bard.xml");
 		}
 		protected static void Synthesis() {
 			b = new Bard.Bard();
