@@ -8,6 +8,7 @@ namespace testHarness
 		static elitecore.PilotLogManager p;
 		static Bard.Bard b;
 		static string demoFilePath = "E:\\Elite\\dev\\jrnl\\jrnl\\Journal.160922205901.01.log";
+		static string bardFile = "bard.bin";
 		public static void Main(string[] args)
 		{
 			readExisting(demoFilePath);
@@ -15,14 +16,17 @@ namespace testHarness
 		protected static void readExisting(string filename)
 		{
 			//var b = new Bard.Bard();
-			if (System.IO.File.Exists("bard.xml"))
+			if (false) //System.IO.File.Exists(bardFile))
 			{
 				System.Diagnostics.Debug.WriteLine("Loading existing bard");
-				b = Bard.Bard.Load("bard.xml");
+				b = Bard.Bard.Load(bardFile);
 			}
 			else {
 				System.Diagnostics.Debug.WriteLine("Creating New bard");
 				b = new Bard.Bard();
+				b.ResponseManager.AddResponse("loadgame", "Commander's log entry");
+				b.ResponseManager.AddResponse("docked", "Docked at {stationname} in {starsystem}.");
+				b.ResponseManager.AddResponse("docked", "{commander} docked at {stationname} in {starsystem}.");
 			}
 			var fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read);
 			var sr = new System.IO.StreamReader(fs);
@@ -34,11 +38,17 @@ namespace testHarness
 			}
 			sr.Close();
 			b.dump();
-			while (Console.ReadKey().Key != ConsoleKey.Escape)
+			/*while (Console.ReadKey().Key != ConsoleKey.Escape)
 			{
+			}*/
+			Bard.Bard.Save(b, bardFile);
+			for (int i = 0; i < 5; i++)
+			{
+				b.Tell("story" + i + ".txt");
 			}
-			Bard.Bard.Save(b, "bard.xml");
+			b.ClauseFacts();
 		}
+
 		protected static void Synthesis() {
 			b = new Bard.Bard();
 			p = new elitecore.PilotLogManager("./");

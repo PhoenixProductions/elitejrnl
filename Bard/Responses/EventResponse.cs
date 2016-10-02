@@ -6,6 +6,7 @@ namespace Bard
 	/// <summary>
 	/// Represents ways to response to an event
 	/// </summary>
+	[Serializable]
 	public class EventResponse
 	{
 		private string eventId;
@@ -13,6 +14,16 @@ namespace Bard
 		private double signficance;
 
 		private System.Collections.Hashtable responses;
+
+		public Hashtable Responses
+		{
+			get
+			{
+				return responses;
+			}
+
+		}
+
 		public EventResponse(string eventId) : this(eventId, 0.0)
 		{
 			this.eventId = eventId.ToLower();
@@ -24,13 +35,18 @@ namespace Bard
 			this.signficance = signficance;
 		}
 
-		public void AddResponse(string responseText)
+		public void AddResponseText(string responseText)
 		{
 			string hash = EventResponse.GetMd5Hash(responseText);
-			if (!responses.ContainsKey(hash))
+			if (!Responses.ContainsKey(hash))
 			{
+				System.Diagnostics.Debug.WriteLine("Adding new response text");
 				EventResponseClause rc = new EventResponseClause(responseText);
-				this.responses.Add(hash, rc);
+				this.Responses.Add(hash, rc);
+			}
+			else {
+				System.Diagnostics.Debug.WriteLine("Duplicate response text "+ responseText + " for event " + this.eventId);
+				throw new ResponseKnownException();
 			}
 		}
 		/// <summary>
@@ -38,14 +54,14 @@ namespace Bard
 		/// </summary>
 		public EventResponseClause Select()
 		{
-			int limit = this.responses.Count;
-			ArrayList keys = new System.Collections.ArrayList(responses.Keys);
-			Random r = new Random();
-			int ri = r.Next();
-			string k = (string)keys[ri];
+			int limit = this.Responses.Count;
+			var keys = new System.Collections.ArrayList(Responses.Keys);
+			var r = new Random();
+			System.Diagnostics.Debug.WriteLine("Limit " + (keys.Count));
+			int ri = r.Next(keys.Count);
+			var k = (string)keys[ri];
 
-			return (EventResponseClause)this.responses[k];
-
+			return (EventResponseClause)this.Responses[k];
 		}
 		protected static string GetMd5Hash(string input)
 		{

@@ -4,6 +4,7 @@ namespace Bard
 	/// <summary>
 	/// A single response phrase that can be made for a given event
 	/// </summary>
+	[Serializable]
 	public class EventResponseClause
 	{
 		/// <summary>
@@ -17,11 +18,51 @@ namespace Bard
 		private DateTime lastUsed;
 
 		private string text;
+
+		public DateTime LastUsed
+		{
+			get
+			{
+				return lastUsed;
+			}
+
+			set
+			{
+				lastUsed = value;
+			}
+		}
+
+		public string Text
+		{
+			get
+			{
+				return text;
+			}
+
+			set
+			{
+				text = value;
+			}
+		}
+
+		public int UsageCount
+		{
+			get
+			{
+				return usageCount;
+			}
+
+			set
+			{
+				usageCount = value;
+			}
+		}
+
 		public EventResponseClause(string Text)
 		{
-			this.text = Text;
-			this.usageCount = 0;
-			this.lastUsed = DateTime.MinValue;
+			this.Text = Text;
+			this.UsageCount = 0;
+			this.LastUsed = DateTime.MinValue;
 		}
 	}
 }

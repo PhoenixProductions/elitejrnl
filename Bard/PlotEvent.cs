@@ -53,7 +53,7 @@ namespace Bard
 					{
 						EventName = tr.Value.ToString();
 					}
-					System.Diagnostics.Debug.WriteLine("Got string value and propname");
+					//System.Diagnostics.Debug.WriteLine("Got string value and propname");
 					Fact f = new Fact(lastPropName, tr.Value);
 					tmpFacts.Add(f);
 					lastPropName = "";
@@ -72,7 +72,7 @@ namespace Bard
 				}
 				else if (tr.TokenType == JsonToken.PropertyName)
 				{
-					System.Diagnostics.Debug.WriteLine("Setting propname");
+					//System.Diagnostics.Debug.WriteLine("Setting propname");
 					lastPropName = tr.Value.ToString();
 				}
 			}

@@ -18,10 +18,15 @@ namespace Bard
 
 		private ArrayList plotEvents;
 
+		private ResponseManager rm;
+
+
+
 		public Bard()
 		{
 			this.tokens = new StringDictionary();
 			this.plotEvents = new ArrayList();
+			this.rm = new ResponseManager();
 		}
 
 		public Bard(StringDictionary tokens)
@@ -69,6 +74,61 @@ namespace Bard
 			}
 		}
 
+		/// <summary>
+		/// Based on what I know, tell the story
+		/// </summary>
+		public void Tell(string FilePath)
+		{
+			bool writeUnknownEvents = false;
+			//if (!File.Exists(FilePath))
+			{
+				using (System.IO.StreamWriter sr = new StreamWriter(FilePath, false))
+				{
+					foreach (PlotEvent e in this.plotEvents)
+					{
+						try
+						{
+							EventResponse r = this.ResponseManager.Respond(e.Event);
+							System.Diagnostics.Debug.WriteLine(string.Format("Numer of possible responses: {0}", r.Responses.Count));
+							EventResponseClause rc = r.Select();
+							System.Diagnostics.Debug.WriteLine(rc.Text);
+							string line = rc.Text;
+							System.Diagnostics.Debug.WriteLine(string.Format("Last Used :{0}", rc.LastUsed));
+							rc.UsageCount++;
+							System.Diagnostics.Debug.WriteLine(string.Format("Times Used :{0}", rc.UsageCount));
+							rc.LastUsed = DateTime.Now;
+
+							// TODO match {} tokens with facts from the event
+							foreach (string key in this.cmdr.Facts.Keys)
+							{
+								string token = String.Format("{{{0}}}", key);
+								line = line.Replace(token, cmdr.Facts[key].Value.ToString());
+							}
+							foreach (string key in e.Facts.Keys)
+							{
+								string token = String.Format("{{{0}}}", key);
+								string replacement = e.Facts[key].Value.ToString();
+								//System.Diagnostics.Debug.WriteLine(String.Format("Replacing '{0}' with {1}", token,replacement));
+								line = line.Replace(token, replacement);
+							}
+							System.Diagnostics.Debug.WriteLine(line);
+							sr.WriteLine(line);
+						}
+						catch (UnknownEventException exception)
+						{
+							if (writeUnknownEvents)
+							{
+								sr.WriteLine(exception.Message);
+							}
+						}
+					}
+				}
+			}
+		}
+		public void ClauseFacts()
+		{
+
+		}
 		public void dump()
 		{
 			Console.WriteLine("Tokens:");
@@ -93,6 +153,8 @@ namespace Bard
 					Console.WriteLine(" {0} - {1} - {2}", f2.id, f2.Name, f2.Value);
 				}
 			}
+			Console.WriteLine("Responses:");
+
 			Console.WriteLine("*****");
 			Console.WriteLine("");
 		}
@@ -121,6 +183,18 @@ namespace Bard
 				return bard;
 			}
 			throw new ArgumentException("File does not exist");
+		}
+		/// <summary>
+		/// Gets the rm.
+		/// </summary>
+		/// <value>The rm.</value>
+		public ResponseManager ResponseManager
+		{
+			get
+			{
+				return rm;
+			}
+
 		}
 	}
 }
