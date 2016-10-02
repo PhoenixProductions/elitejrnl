@@ -8,6 +8,7 @@
     <RootNamespace>Bard</RootNamespace>
     <AssemblyName>Bard</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationManifest>EventResponseClause.cs.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,7 @@
     <Compile Include="Factable.cs" />
     <Compile Include="Responses\EventResponse.cs" />
     <Compile Include="Responses\EventResponseManager.cs" />
+    <Compile Include="Responses\EventResponseClause.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClauseLibrary.xml" />
