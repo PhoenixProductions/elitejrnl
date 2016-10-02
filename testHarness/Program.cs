@@ -15,6 +15,15 @@ namespace testHarness
 		protected static void readExisting(string filename)
 		{
 			//var b = new Bard.Bard();
+			if (System.IO.File.Exists("bard.bin"))
+			{
+				System.Diagnostics.Debug.WriteLine("Loading existing bard");
+				b = Bard.Bard.Load("bard.bin");
+			}
+			else {
+				System.Diagnostics.Debug.WriteLine("Creating New bard");
+				b = new Bard.Bard();
+			}
 			var fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read);
 			var sr = new System.IO.StreamReader(fs);
 			string line;
@@ -28,6 +37,7 @@ namespace testHarness
 			while (Console.ReadKey().Key != ConsoleKey.Escape)
 			{
 			}
+			Bard.Bard.Save(b, "bard.bin");
 		}
 		protected static void Synthesis() {
 			b = new Bard.Bard();

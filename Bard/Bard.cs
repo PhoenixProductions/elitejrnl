@@ -97,20 +97,20 @@ namespace Bard
 			Console.WriteLine("");
 		}
 
-		public static void Save(Bard bard, string File)
+		public static void Save(Bard bard, string FilePath)
 		{
-			FileStream outfile = File.Create(File);
+			FileStream outfile = File.Create(FilePath);
 			BinaryFormatter bf = new BinaryFormatter();
 			bf.Serialize(outfile, bard);
 			outfile.Close();
 		}
 
-		public static Bard Load(string File)
+		public static Bard Load(string FilePath)
 		{
-			bool flag = File.Exists(File);
+			bool flag = File.Exists(FilePath);
 			if (flag)
 			{
-				FileStream fs = File.OpenRead(File);
+				FileStream fs = File.OpenRead(FilePath);
 				BinaryFormatter bf = new BinaryFormatter();
 				Bard bard = (Bard)bf.Deserialize(fs);
 				fs.Close();

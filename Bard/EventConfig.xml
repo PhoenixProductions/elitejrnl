@@ -5,4 +5,15 @@
 			<response>{commanderName}</response>
 		</responses>
 	</event>
+	<event id="docked" signficance="">
+	<responses>
+		<response>Docked at {stationname}</response>
+		<response >Landed at {stationname}</response>
+	</responses>
+	</event>
+	<event id="liftoff" signficance="">
+		<responses>
+			<response ></response>
+		</responses>
+	</event>
 </PlotEvents>
