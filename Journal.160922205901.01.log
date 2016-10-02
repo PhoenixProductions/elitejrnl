@@ -1,0 +1,46 @@
+{ "timestamp":"2016-09-22T19:59:01Z", "event":"Fileheader", "part":1, "language":"English\\UK", "gameversion":"2.2 (Beta 3)", "build":"r121970/r0 " }
+{ "timestamp":"2016-09-22T19:59:56Z", "event":"LoadGame", "Commander":"Wu Ye", "Ship":"BelugaLiner", "ShipID":18, "StartLanded":true, "GameMode":"Open", "Credits":15992765, "Loan":0 }
+{ "timestamp":"2016-09-22T19:59:56Z", "event":"Rank", "Combat":3, "Trade":5, "Explore":7, "Empire":3, "Federation":5, "CQC":0 }
+{ "timestamp":"2016-09-22T19:59:56Z", "event":"Progress", "Combat":9, "Trade":94, "Explore":10, "Empire":6, "Federation":77, "CQC":30 }
+{ "timestamp":"2016-09-22T20:00:24Z", "event":"Location", "StarSystem":"Hill Pa Hsi", "StarPos":[29.469,-1.688,25.375], "Allegiance":"Independent", "Economy":"$economy_HighTech;", "Economy_Localised":"High tech", "Government":"$government_Corporate;", "Government_Localised":"Corporate", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security", "Faction":"Crimson State Group" }
+{ "timestamp":"2016-09-22T20:00:24Z", "event":"Touchdown", "Latitude":-1.388157, "Longitude":-51.926220 }
+{ "timestamp":"2016-09-22T20:01:14Z", "event":"Liftoff", "Latitude":-1.388157, "Longitude":-51.926220 }
+{ "timestamp":"2016-09-22T20:01:35Z", "event":"LaunchFighter", "Loadout":"three", "PlayerControlled":false }
+{ "timestamp":"2016-09-22T20:01:41Z", "event":"VehicleSwitch", "To":"Fighter" }
+{ "timestamp":"2016-09-22T20:03:55Z", "event":"VehicleSwitch", "To":"Mothership" }
+{ "timestamp":"2016-09-22T20:04:57Z", "event":"LoadGame", "Commander":"Wu Ye", "Ship":"BelugaLiner", "ShipID":18, "GameMode":"Open", "Credits":15992765, "Loan":0 }
+{ "timestamp":"2016-09-22T20:04:57Z", "event":"Rank", "Combat":3, "Trade":5, "Explore":7, "Empire":3, "Federation":5, "CQC":0 }
+{ "timestamp":"2016-09-22T20:04:57Z", "event":"Progress", "Combat":9, "Trade":94, "Explore":10, "Empire":6, "Federation":77, "CQC":30 }
+{ "timestamp":"2016-09-22T20:05:14Z", "event":"Location", "StarSystem":"Hill Pa Hsi", "StarPos":[29.469,-1.688,25.375], "Allegiance":"Independent", "Economy":"$economy_HighTech;", "Economy_Localised":"High tech", "Government":"$government_Corporate;", "Government_Localised":"Corporate", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security", "Faction":"Crimson State Group" }
+{ "timestamp":"2016-09-22T20:06:28Z", "event":"SupercruiseEntry", "StarSystem":"Hill Pa Hsi" }
+{ "timestamp":"2016-09-22T20:07:14Z", "event":"Screenshot", "Filename":"\\ED_Pictures\\Screenshot_0169.bmp", "Width":2560, "Height":1440, "System":"Hill Pa Hsi", "Body":"Hill Pa Hsi A 1" }
+{ "timestamp":"2016-09-22T20:08:28Z", "event":"SupercruiseExit", "StarSystem":"Hill Pa Hsi", "Body":"Curie Gateway" }
+{ "timestamp":"2016-09-22T20:08:47Z", "event":"DockingRequested", "StationName":"Curie Gateway" }
+{ "timestamp":"2016-09-22T20:08:48Z", "event":"DockingGranted", "LandingPad":39, "StationName":"Curie Gateway" }
+{ "timestamp":"2016-09-22T20:12:19Z", "event":"Docked", "StationName":"Curie Gateway", "StationType":"Coriolis", "StarSystem":"Hill Pa Hsi", "Faction":"Crimson State Group", "Allegiance":"Independent", "Economy":"$economy_HighTech;", "Economy_Localised":"High tech", "Government":"$government_Corporate;", "Government_Localised":"Corporate", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security" }
+{ "timestamp":"2016-09-22T20:13:21Z", "event":"ShipyardBuy", "ShipType":"cobramkiv", "ShipPrice":76472, "StoreOldShip":"BelugaLiner", "StoreShipID":18 }
+{ "timestamp":"2016-09-22T20:13:22Z", "event":"ShipyardNew", "ShipType":"cobramkiv", "NewShipID":22 }
+{ "timestamp":"2016-09-22T20:13:26Z", "event":"Docked", "StationName":"Curie Gateway", "StationType":"Coriolis", "StarSystem":"Hill Pa Hsi", "Faction":"Crimson State Group", "Allegiance":"Independent", "Economy":"$economy_HighTech;", "Economy_Localised":"High tech", "Government":"$government_Corporate;", "Government_Localised":"Corporate", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security" }
+{ "timestamp":"2016-09-22T20:14:10Z", "event":"ModuleBuy", "Slot":"PaintJob", "BuyItem":"$paintjob_cobramkiv_blackfriday_01_name;", "BuyItem_Localised":"Black Friday", "BuyPrice":0, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:15:02Z", "event":"ModuleBuy", "Slot":"FrameShiftDrive", "SellItem":"$int_hyperdrive_size4_class1_name;", "SellItem_Localised":"FSD", "SellPrice":1988, "BuyItem":"$int_hyperdrive_size4_class4_name;", "BuyItem_Localised":"FSD", "BuyPrice":53669, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:15:16Z", "event":"ModuleBuy", "Slot":"PowerPlant", "SellItem":"$int_powerplant_size4_class1_name;", "SellItem_Localised":"Power Plant", "SellPrice":1988, "BuyItem":"$int_powerplant_size4_class5_name;", "BuyItem_Localised":"Power Plant", "BuyPrice":161008, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:15:16Z", "event":"ShieldState", "ShieldsUp":false }
+{ "timestamp":"2016-09-22T20:15:21Z", "event":"ShieldState", "ShieldsUp":true }
+{ "timestamp":"2016-09-22T20:15:31Z", "event":"ModuleBuy", "Slot":"PowerDistributor", "SellItem":"$int_powerdistributor_size3_class1_name;", "SellItem_Localised":"Power Distributor", "SellPrice":405, "BuyItem":"$int_powerdistributor_size3_class2_name;", "BuyItem_Localised":"Power Distributor", "BuyPrice":1013, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:15:37Z", "event":"ModuleBuy", "Slot":"LifeSupport", "SellItem":"$int_lifesupport_size3_class1_name;", "SellItem_Localised":"Life Support", "SellPrice":405, "BuyItem":"$int_lifesupport_size3_class2_name;", "BuyItem_Localised":"Life Support", "BuyPrice":1013, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:15:44Z", "event":"ModuleBuy", "Slot":"Radar", "SellItem":"$int_sensors_size3_class1_name;", "SellItem_Localised":"Sensors", "SellPrice":405, "BuyItem":"$int_sensors_size3_class2_name;", "BuyItem_Localised":"Sensors", "BuyPrice":1013, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:16:15Z", "event":"ModuleSell", "Slot":"MediumHardpoint1", "SellItem":"$hpt_pulselaser_fixed_small_name;", "SellItem_Localised":"Pulse Laser", "SellPrice":220, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:16:24Z", "event":"ModuleSell", "Slot":"MediumHardpoint2", "SellItem":"$hpt_pulselaser_fixed_small_name;", "SellItem_Localised":"Pulse Laser", "SellPrice":220, "Ship":"cobramkiv", "ShipID":22 }
+{ "timestamp":"2016-09-22T20:17:58Z", "event":"Undocked", "StationName":"Curie Gateway", "StationType":"Coriolis" }
+{ "timestamp":"2016-09-22T20:19:17Z", "event":"FSDJump", "StarSystem":"Sesuang", "StarPos":[45.688,-3.219,22.125], "Allegiance":"Independent", "Economy":"$economy_Agri;", "Economy_Localised":"Agriculture", "Government":"$government_Corporate;", "Government_Localised":"Corporate", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security", "JumpDist":16.612, "FuelUsed":2.272288, "FuelLevel":13.727713, "Faction":"Sesuang Co" }
+{ "timestamp":"2016-09-22T20:20:12Z", "event":"FSDJump", "StarSystem":"V886 Centauri", "StarPos":[45.156,12.125,26.969], "Allegiance":"Federation", "Economy":"$economy_Refinery;", "Economy_Localised":"Refinery", "Government":"$government_Democracy;", "Government_Localised":"Democracy", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security", "JumpDist":16.099, "FuelUsed":2.074733, "FuelLevel":11.652979, "Faction":"V886 Centauri Future" }
+{ "timestamp":"2016-09-22T20:21:08Z", "event":"FSDJump", "StarSystem":"Shinrarta Dezhra", "StarPos":[55.719,17.594,27.156], "Allegiance":"Independent", "Economy":"$economy_HighTech;", "Economy_Localised":"High tech", "Government":"$government_Democracy;", "Government_Localised":"Democracy", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security", "JumpDist":11.896, "FuelUsed":1.016750, "FuelLevel":10.636229, "Faction":"The Pilots Federation" }
+{ "timestamp":"2016-09-22T20:23:34Z", "event":"ApproachSettlement", "Name":"Pilots Federation's Secrecy" }
+{ "timestamp":"2016-09-22T20:23:35Z", "event":"SupercruiseExit", "StarSystem":"Shinrarta Dezhra", "Body":"Founders World" }
+{ "timestamp":"2016-09-22T20:23:45Z", "event":"DataScanned", "Type":"TouristBeacon" }
+{ "timestamp":"2016-09-22T20:24:32Z", "event":"SupercruiseEntry", "StarSystem":"Shinrarta Dezhra" }
+{ "timestamp":"2016-09-22T20:25:19Z", "event":"SupercruiseExit", "StarSystem":"Shinrarta Dezhra", "Body":"Jameson Memorial" }
+{ "timestamp":"2016-09-22T20:25:28Z", "event":"DockingRequested", "StationName":"Jameson Memorial" }
+{ "timestamp":"2016-09-22T20:25:29Z", "event":"DockingGranted", "LandingPad":43, "StationName":"Jameson Memorial" }
+{ "timestamp":"2016-09-22T20:26:06Z", "event":"MaterialCollected", "Category":"Encoded", "Name":"bulkscandata" }
+{ "timestamp":"2016-09-22T20:26:31Z", "event":"Docked", "StationName":"Jameson Memorial", "StationType":"Orbis", "StarSystem":"Shinrarta Dezhra", "Faction":"The Pilots Federation", "Allegiance":"Independent", "Economy":"$economy_HighTech;", "Economy_Localised":"High tech", "Government":"$government_Democracy;", "Government_Localised":"Democracy", "Security":"$SYSTEM_SECURITY_high;", "Security_Localised":"High Security" }
