@@ -46,6 +46,7 @@
     <Compile Include="Responses\EventResponseClause.cs" />
     <Compile Include="Responses\ResponseKnownException.cs" />
     <Compile Include="Responses\UnknownEventException.cs" />
+    <Compile Include="PlotEvents\Navigation\Docking.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClauseLibrary.xml" />
@@ -56,6 +57,7 @@
     <Folder Include="PlotEvents\" />
     <Folder Include="PlotEvents\Rank\" />
     <Folder Include="Responses\" />
+    <Folder Include="PlotEvents\Navigation\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
