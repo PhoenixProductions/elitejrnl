@@ -7,11 +7,11 @@ namespace testHarness
 		static string lineformat = "{{\"timestamp\":\"{0}\", \"event\":\"{1}\",{2}}}";
 		static elitecore.PilotLogManager p;
 		static Bard.Bard b;
-		static string demoFilePath = "E:\\Elite\\dev\\jrnl\\jrnl\\Journal.160922205901.01.log";
+		static string journalLocation = "";
 		static string bardFile = "bard.bin";
 		public static void Main(string[] args)
 		{
-			readExisting(demoFilePath);
+			readExisting(journalLocation);
 		}
 		protected static void readExisting(string filename)
 		{
@@ -34,7 +34,7 @@ namespace testHarness
 			while((line = sr.ReadLine()) != null) {
 				Console.WriteLine(line);
 				Bard.PlotEvent plotevent = Bard.PlotEvent.FromEliteLogData(line);
-				Bard.NoteEvent(b, plotevent);
+				b.NoteEvent(plotevent);
 			}
 			sr.Close();
 			b.dump();
@@ -87,7 +87,7 @@ namespace testHarness
 			}
 			System.Diagnostics.Debug.WriteLine(plotevent);
 			*/
-			Bard.NoteEvent(b, plotevent);
+			b.NoteEvent(plotevent);
 		}
 	}
 }

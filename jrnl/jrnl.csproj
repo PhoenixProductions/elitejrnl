@@ -30,13 +30,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="NDesk.Options">
+      <HintPath>..\packages\NDesk.Options.0.2.1\lib\NDesk.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="ManyConsole">
+      <HintPath>..\packages\ManyConsole.0.4.2.20\lib\ManyConsole.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\TellCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="responses\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bard\Bard.csproj">
@@ -60,4 +68,7 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

@@ -10,12 +10,13 @@ namespace Bard
 
 		public bool CanHandle(string eventId)
 		{
-			switch(eventId.ToLower()) {
-				case "docked":
-				case "undocked":
-					return true;
-				default:
-					return false;
+			switch (eventId.ToLower ()) {
+			case "docked":
+			case "undocked":
+				return true;
+			default:
+				return false;
+			}
 		}
 	}
 }

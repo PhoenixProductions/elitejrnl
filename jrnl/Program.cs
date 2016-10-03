@@ -1,5 +1,6 @@
 ﻿using System;
-
+using ManyConsole;
+using System.Collections.Generic;
 namespace jrnl
 {
 	class MainClass
@@ -7,8 +8,20 @@ namespace jrnl
 		const string bardfile = "bard.bin";
 		const string responsedir = "responses";
 		const string journalfile = "E:\\Elite\\dev\\jrnl\\jrnl\\Journal.160922205901.01.log";
-		public static void Main(string[] args)
+		static Bard.Bard bard;
+		public static int Main(string[] args)
 		{
+			bard = new Bard.Bard(); //Bard.Bard.Load(bardfile);
+			var Commands = GetCommands ();
+			return ConsoleCommandDispatcher.DispatchCommand (Commands, args, Console.Out);
+		}
+
+		public static IEnumerable<ConsoleCommand>GetCommands() {
+			return ConsoleCommandDispatcher.FindCommandsInSameAssemblyAs(typeof (MainClass));
+		}
+		/*
+		{
+
 			Console.WriteLine("Hello World!");
 
 			Bard.Bard b = new Bard.Bard(); //Bard.Bard.Load(bardfile);
@@ -32,11 +45,12 @@ namespace jrnl
 			{
 				Console.WriteLine(line);
 				Bard.PlotEvent plotevent = Bard.PlotEvent.FromEliteLogData(line);
-				Bard.NoteEvent(b, plotevent);
+				b.NoteEvent(plotevent);
 			}
 			sr.Close();
 
 			b.Tell("story.txt");
 		}
+		*/
 	}
 }
