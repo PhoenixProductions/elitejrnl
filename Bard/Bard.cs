@@ -9,6 +9,8 @@ namespace Bard
 	[Serializable]
 	public class Bard
 	{
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 		private EntityInfo cmdr = new EntityInfo("commander");
 
 		private const string ExpectedTokens = "commanderName,shipName,gender";
@@ -19,10 +21,10 @@ namespace Bard
 
 		private ResponseManager rm;
 
-
-
+		private bool autogenerateresponsefile = false;
 		public Bard()
 		{
+			log.Info("Initialising new Bard");
 			this.tokens = new StringDictionary();
 			this.plotEvents = new ArrayList();
 			this.rm = new ResponseManager();
@@ -30,6 +32,7 @@ namespace Bard
 
 		public Bard(StringDictionary tokens)
 		{
+			log.Info("Initialising new Bard with tokens");
 			this.tokens = tokens;
 			string[] mandatoryTokens = "commanderName,shipName,gender".Split(new char[]
 			{
@@ -42,6 +45,7 @@ namespace Bard
 				bool flag = !this.tokens.ContainsKey(s);
 				if (flag)
 				{
+					log.Warn(string.Format("Mandatory token {0} was not defined", s));
 					missing.Add(string.Format("Mandatory token {0} was not defined", s));
 				}
 			}
@@ -69,6 +73,14 @@ namespace Bard
 				else
 				{
 					plotEvents.Add(e);
+					if (!ResponseManager.Responses.ContainsKey(e.Event.ToLower())) {
+						System.Collections.ArrayList facts = new ArrayList();
+						foreach (var fact in e.Facts)
+						{
+							facts.Add(fact.Key);
+						}
+						log.Warn(String.Format("Unknown Event noted: {0}, Facts: {1}", e.Event, string.Join(",", facts.ToArray())));
+					}
 				}
 			}
 		}
@@ -88,16 +100,16 @@ namespace Bard
 						try
 						{
 							EventResponse r = ResponseManager.Respond(e.Event);
-							Debug.WriteLine(string.Format("Numer of possible responses: {0}", r.Responses.Count));
+							log.Info(string.Format("Numer of possible responses: {0}", r.Responses.Count));
 							string line = "";
 							for (int attempts = 0; attempts < r.Responses.Count; attempts++)
 							{
 								EventResponseClause rc = r.Select();
-								Debug.WriteLine(rc.Text);
+								log.Info(rc.Text);
 								line = rc.Text;
-								Debug.WriteLine(string.Format("Last Used :{0}", rc.LastUsed));
+								log.Info(string.Format("Last Used :{0}", rc.LastUsed));
 								rc.UsageCount++;
-								Debug.WriteLine(string.Format("Times Used :{0}", rc.UsageCount));
+								log.Info(string.Format("Times Used :{0}", rc.UsageCount));
 								rc.LastUsed = DateTime.Now;
 
 								// TODO match {} tokens with facts from the event
@@ -116,14 +128,14 @@ namespace Bard
 								if (line.IndexOf("{{", StringComparison.CurrentCultureIgnoreCase) >= 0)
 								{
 									// we have an unknown fact
-									Debug.WriteLine("Unknown fact in " + line);
+									log.Warn("Unknown fact in " + line);
 									line = "";
 								}
 								else {
 									break;	// all subs made so exit loop
 								}
 							}
-							Debug.WriteLine(line);
+							log.Info(line);
 							if (line != "")
 							{
 								sr.WriteLine(line);
@@ -131,6 +143,7 @@ namespace Bard
 						}
 						catch (UnknownEventException exception)
 						{
+							log.Warn("Undefined Event: " + exception.EventID);
 							if (writeUnknownEvents)
 							{
 								sr.WriteLine(exception.Message);
@@ -186,6 +199,7 @@ namespace Bard
 
 		public static Bard Load(string FilePath)
 		{
+			log.Info("Loading from bardfile: "+ FilePath);
 			bool flag = File.Exists(FilePath);
 			if (flag)
 			{
@@ -197,6 +211,7 @@ namespace Bard
 				fs.Close();
 				return bard;
 			}
+			log.Error("Could not find specified bardfile");
 			throw new ArgumentException("File does not exist");
 		}
 		/// <summary>

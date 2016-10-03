@@ -40,7 +40,13 @@ namespace Bard
 				r = new EventResponse(eventId.ToLower());
 				this.responses.Add(eventId.ToLower(), r);
 			}
-			r.AddResponseText(ResponseText);
+			try
+			{
+				r.AddResponseText(ResponseText);
+			}
+			catch (ResponseKnownException)
+			{
+			}
 
 			return r;
 		}
@@ -57,7 +63,7 @@ namespace Bard
 				r = this.responses[eventId.ToLower()];
 				return r;
 			}
-			throw new UnknownEventException(String.Format("{0} has no responses", eventId));
+			throw new UnknownEventException(String.Format("{0} has no responses", eventId), eventId);
 		}
 	}
 }

@@ -36,11 +36,17 @@
     <Reference Include="ManyConsole">
       <HintPath>..\packages\ManyConsole.0.4.2.20\lib\ManyConsole.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\TellCommand.cs" />
+    <Compile Include="Commands\AddResponseCommand.cs" />
+    <Compile Include="Commands\GenerateEventsCommand.cs" />
+    <Compile Include="Commands\JrnlCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="responses\" />
@@ -66,9 +72,13 @@
     <Content Include="responses\undocked.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Journal.160922205901.01.log">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="app.config" />
   </ItemGroup>
 </Project>
